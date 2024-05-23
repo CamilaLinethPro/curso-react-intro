@@ -1,21 +1,20 @@
-import { TodoContext } from '../TodoContext';
 import './TodoSearch.css';
 import React from 'react';
 
 
-function TodoSearch() {
-  const {
-    searchValue, 
-    setSearchValue
-  } = React.useContext(TodoContext)
+function TodoSearch({searchValue, 
+  setSearchValue, loading}) {
+  
   return (
     <input
       placeholder="Cortar cebolla"
       className="TodoSearch"
       value={searchValue}
+      disabled={loading}
       onChange= {(event) =>{
         setSearchValue(event.target.value);
       }}
+      
     />
   );
 }

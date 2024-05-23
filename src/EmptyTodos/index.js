@@ -5,7 +5,7 @@ import React from 'react';
 function EmptyTodos() {
     
   return (
-    <p>Cargando...</p>
+    <p>Crea tu primer TODO!</p>
   );
 }
 
