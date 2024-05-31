@@ -22,20 +22,31 @@ function App() {
 
 
     const {
-        searchedTodos,
-        completeTodo,
-        deleteTodo,
+        states, stateUpdaters, 
+    } = useTodos();
+
+    const { 
         loading,
         error,
-        openModal,
-        setOpenModal,
         completedTodos,
         totalTodos,
         searchValue,
+        searchedTodos,
+        openModal,
+    } = states;
+
+
+    const {
         setSearchValue,
+        completeTodo,
+        deleteTodo,
+        setOpenModal,
         addTodo,
-        sincronizeTodos,
-    } = useTodos();
+        sincronizeTodos
+    } = stateUpdaters;
+
+
+
 
     return (
         <React.Fragment>
