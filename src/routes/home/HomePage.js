@@ -3,22 +3,22 @@
 import React from 'react';
 //import { AppUI } from './AppUI';
 
-import { TodoList } from '../ui/TodoList';
-import { TodoItem } from '../TodoItem';
-import { TodosLoading } from '../ui/TodosLoading';
-import { TodosError } from '../ui/TodosError';
-import { EmptyTodos } from '../ui/EmptyTodos';
-import { CreateTodoButton } from '../ui/CreateTodoButton';
-import { Modal } from '../ui/Modal';
-import { TodoForm } from '../ui/TodoForm';
-import { TodoHeader } from '../ui/TodoHeader';
-import { TodoCounter } from '../ui/TodoCounter';
-import { TodoSearch } from '../ui/TodoSearch';
-import { useTodos } from '../routes/useTodos';
-import { ChangeAlert } from '../ui/ChangeAlert';
+import { useTodos } from '../useTodos';
+import { TodoList } from '../../ui/TodoList';
+import { TodoItem } from '../../ui/TodoItem';
+import { TodosLoading } from '../../ui/TodosLoading';
+import { TodosError } from '../../ui/TodosError';
+import { EmptyTodos } from '../../ui/EmptyTodos';
+import { CreateTodoButton } from '../../ui/CreateTodoButton';
+import { Modal } from '../../ui/Modal';
+import { TodoForm } from '../../ui/TodoForm';
+import { TodoHeader } from '../../ui/TodoHeader';
+import { TodoCounter } from '../../ui/TodoCounter';
+import { TodoSearch } from '../../ui/TodoSearch';
+import { ChangeAlert } from '../../ui/ChangeAlert';
 
 
-function App() {
+function HomePage() {
 
 
     const {
@@ -126,4 +126,4 @@ function App() {
 
 
 
-export default App;
+export {HomePage};
