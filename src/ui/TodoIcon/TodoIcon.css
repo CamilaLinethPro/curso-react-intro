@@ -6,6 +6,11 @@
             position:absolute;
             left:12px
         }
+        .Icon-container-edit{
+            position:absolute;
+            top:-24px;
+            right:48px
+        }
         .Icon-container-check--active{
             color:#4caf50
         }
@@ -21,6 +26,10 @@
             width:24px;
             height:24px;
             
+        }
+
+        .Icon-container-edit:hover .Icon-svg{
+            fill:#61DAFA
         }
 
         .Icon-container-delete:hover .Icon-svg{

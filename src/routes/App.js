@@ -15,8 +15,6 @@ function App() {
                 <Route path="/new" element={<NewTodoPage />} />
                 <Route path="/edit/:id" element={<EditTodoPage />} />
                 <Route path="*" element={<p>Not Found</p>} />
-
-
             </Routes>
         </HashRouter>
     )

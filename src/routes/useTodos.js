@@ -4,9 +4,9 @@ import { useLocalStorage } from './useLocalStorage';
 
 
 function useTodos() {
-    const { item: todos, saveItem: saveTodos, loading, error,sincronizeItem: sincronizeTodos  } = useLocalStorage('TODOS_V1', []);
+    const { item: todos, saveItem: saveTodos, loading, error,sincronizeItem: sincronizeTodos  } = useLocalStorage('TODOS_V2', []);
     const [searchValue, setSearchValue] = React.useState('');
-    const [openModal, setOpenModal] = React.useState(false);
+    // const [openModal, setOpenModal] = React.useState(false);
 
     const completedTodos = todos.filter(todo => !!todo.completed).length;
     const totalTodos = todos.length
@@ -21,28 +21,46 @@ function useTodos() {
     );
 
 
-    const completeTodo = (text) => {
+    const completeTodo = (id) => {
         const newTodos = [...todos];
         const todoIndex = newTodos.findIndex(
-            (todo) => todo.text === text
+            (todo) => todo.id === id
         );
         newTodos[todoIndex].completed = newTodos[todoIndex].completed ? false : true;
         saveTodos(newTodos)
     }
 
+    const editTodo = (id, newText) => {
+        const newTodos = [...todos];
+        const todoIndex = newTodos.findIndex(
+            (todo) => todo.id === id
+        );
+        newTodos[todoIndex].text = newText;
+        saveTodos(newTodos)
+    }
+
+
+
     const addTodo = (text) => {
+        const id = newTodoId(todos);
         const newTodos = [...todos];
         newTodos.push({
             text,
-            completed: false
+            completed: false, 
+            id, 
         })
         saveTodos(newTodos);
     }
 
-    const deleteTodo = (text) => {
+    const getTodo = (id) => {
+        const todoIndex = todos.findIndex(todo => todo.id === id)
+        return todos[todoIndex]
+    }
+
+    const deleteTodo = (id) => {
         const newTodos = [...todos];
         const todoIndex = newTodos.findIndex(
-            (todo) => todo.text === text
+            (todo) => todo.id === id
         );
         newTodos.splice(todoIndex, 1);
         saveTodos(newTodos)
@@ -56,21 +74,33 @@ function useTodos() {
         totalTodos,
         searchValue,
         searchedTodos,
-        openModal,
+        getTodo,
+        // openModal,
     }
 
     const stateUpdaters = {
         setSearchValue,
         completeTodo,
         deleteTodo,
-        setOpenModal,
+        // setOpenModal,
         addTodo,
-        sincronizeTodos
+        sincronizeTodos, 
+        editTodo, 
     }
     return {
         states,  stateUpdaters  
            
     }; 
+}
+
+function newTodoId(todoList){
+    if(!todoList.length){
+        return 1;
+    }
+    const idList = todoList.map(todo => todo.id)
+    const idMax = Math.max(...idList)
+    
+    return idMax + 1
 }
 
 export { useTodos }
